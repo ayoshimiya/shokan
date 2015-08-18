@@ -1,0 +1,18 @@
+- content_for :breadcrumb do
+  %li.active
+    Forgot your password?
+
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  .row
+    .col-lg-6
+      .well
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, class: 'form-control'
+        .actions
+          = f.submit "Send me reset password instructions", class: 'btn btn-danger'
+          %br/
+          %br/
+          = render "devise/shared/links"
