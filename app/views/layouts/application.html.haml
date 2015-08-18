@@ -36,6 +36,8 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li
+              = link_to Collection.model_name.human.pluralize.titleize, collections_path
+            %li
               = link_to Book.model_name.human.pluralize.titleize, books_path
             %li
               = link_to Author.model_name.human.pluralize.titleize, authors_path
