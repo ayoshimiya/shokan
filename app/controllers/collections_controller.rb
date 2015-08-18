@@ -4,7 +4,7 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+    @collections = current_user.collections.all
   end
 
   # GET /collections/1
@@ -25,6 +25,7 @@ class CollectionsController < ApplicationController
   # POST /collections.json
   def create
     @collection = Collection.new(collection_params)
+    @collection.user = current_user
 
     respond_to do |format|
       if @collection.save
@@ -64,7 +65,7 @@ class CollectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = current_user.collections.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
