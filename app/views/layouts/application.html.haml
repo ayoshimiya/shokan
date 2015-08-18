@@ -13,6 +13,7 @@
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'android-icon-192x192.png', :rel => 'icon'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
     :javascript
@@ -31,7 +32,9 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
+
         %a.navbar-brand(href="/")
+          %span= image_tag 'icon.png', with: 20, height: 20
           Shokan
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
