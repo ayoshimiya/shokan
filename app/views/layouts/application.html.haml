@@ -33,6 +33,8 @@
           %ul.nav.navbar-nav
             %li
               = link_to Book.model_name.human.pluralize.titleize, books_path
+            %li
+              = link_to Author.model_name.human.pluralize.titleize, authors_path
             = yield :navbar_extra
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?

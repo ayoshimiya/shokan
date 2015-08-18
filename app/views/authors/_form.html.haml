@@ -1,0 +1,8 @@
+= form_for @author, html: { class: "form form-horizontal author" } do |f|
+  .form-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, class: 'form-control', required: true
+    = error_span(@author[:name])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), authors_path, :class => 'btn btn-default'
