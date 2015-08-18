@@ -27,10 +27,12 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="#")
+        %a.navbar-brand(href="/")
           Shokan
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
+            %li
+              = link_to Book.model_name.human.pluralize.titleize, books_path
             = yield :navbar_extra
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
@@ -44,9 +46,9 @@
 
 
     .container
-      .row
-        %ol.breadcrumb
-          = yield :breadcrumb
+      -# .row
+      -#   %ol.breadcrumb
+      -#     = yield :breadcrumb
       .row
         .col-lg-12
           = bootstrap_flash
