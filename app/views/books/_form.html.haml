@@ -12,7 +12,7 @@
   .form-group
     = f.label :author_id, class: 'control-label'
     .controls
-      = f.text_field :author_id, class: 'form-control', required: true
+      = f.select :author_id, options_from_collection_for_select(@form_data[:authors], :id, :name), { include_blank: true }, class: 'chosen form-control'
     = error_span(@book[:author_id])
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), books_path, :class => 'btn btn-default'
