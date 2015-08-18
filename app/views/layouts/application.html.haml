@@ -16,14 +16,12 @@
     = favicon_link_tag 'android-icon-192x192.png', :rel => 'icon'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-    :javascript
-      $(function(){
-        CommonUtilities.initialize_chosen();
-      });
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
-
+    :javascript
+      $(document).on('ready', CommonUtilities.initialize);
+      $(document).on('page:load', CommonUtilities.initialize);
 
   %body
     .navbar.navbar-default.navbar-static-top
