@@ -7,6 +7,12 @@
   %br
   = @collection.name
 
+%p
+  %strong= model_class.human_attribute_name(:books) + ':'
+  %br
+  - @collection.books.each do |book|
+    = book.name
+    %br
 
 = link_to t('.back', :default => t("helpers.links.back")), collections_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_collection_path(@collection), :class => 'btn btn-default'

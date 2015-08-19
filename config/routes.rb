@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :collections
+  resources :collections do
+    member do
+      post 'add_book'
+    end
+  end
 
   resources :books
   resources :authors

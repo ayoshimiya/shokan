@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :set_collection, only: [:show, :edit, :update, :destroy, :add_book]
 
   # GET /collections
   # GET /collections.json
@@ -30,6 +30,26 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       if @collection.save
         format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
+        format.json { render :show, status: :created, location: @collection }
+      else
+        format.html { render :new }
+        format.json { render json: @collection.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def add_book
+    book = Book.find(params[:book_id])
+
+    unless @collection.books.include?(book)
+      @collection.collection_books.build({
+        book: book
+      })
+    end
+
+    respond_to do |format|
+      if @collection.save
+        format.html { redirect_to @collection, notice: 'Book succesfully added to collection' }
         format.json { render :show, status: :created, location: @collection }
       else
         format.html { render :new }
